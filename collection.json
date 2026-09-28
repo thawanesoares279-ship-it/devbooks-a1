@@ -1,0 +1,91 @@
+{
+  "info": {
+    "_postman_id": "8c7b7f65-9e2e-4b1e-8a8c-devbooks-a1",
+    "name": "DevBooks - A1",
+    "description": "Coleção de testes das 5 rotas exigidas na Atividade Prática Avaliativa A1.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "authorId",
+      "value": "COLE_AQUI_O_ID_DO_AUTOR"
+    },
+    {
+      "key": "bookId",
+      "value": "COLE_AQUI_O_ID_DO_LIVRO"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Criar Autor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Machado de Assis\", \"biography\": \"Escritor brasileiro, autor de importantes obras da literatura nacional.\"}"
+        },
+        "url": "{{baseUrl}}/authors"
+      }
+    },
+    {
+      "name": "2 - Criar Livro",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Dom Casmurro\", \"release_year\": 1899, \"author_id\": \"{{authorId}}\"}"
+        },
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "3 - Listar Livros com Autores",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "4 - Atualizar Livro",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Dom Casmurro - Edição Atualizada\", \"release_year\": 1899}"
+        },
+        "url": "{{baseUrl}}/books/{{bookId}}"
+      }
+    },
+    {
+      "name": "5 - Excluir Livro",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/books/{{bookId}}"
+      }
+    }
+  ]
+}
